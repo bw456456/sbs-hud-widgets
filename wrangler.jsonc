@@ -1,0 +1,91 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "sbs-hud-widgets",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-07-05",
+	"workers_dev": true,
+	// "routes": ["widgets.smallbiz.systems/*"],
+	// Enable Cloudflare Observability (logs)
+	"observability": {
+		"logs": {
+			"enabled": true
+		}
+	},
+
+	// Send logs to any Logpush jobs you’ve configured at account level
+	"logpush": true,
+	"account_id": "df9e731c08fd8cd1364b144a5942cf6e",
+
+	// Workers Analytics Engine
+	"analytics_engine_datasets": [
+		{
+			"binding": "WORKERS_ANALYTICS_ENGINE",
+			"dataset": "workers_analytics_engine"
+		}
+	],
+
+	// Cloudflare Secrets Store (account-wide secrets)
+	"secrets_store_secrets": [
+		{
+			"binding": "CLOUDFLARE_API_KEY",
+			"store_id": "743c39880ba14892a08e118be5fb54d6",
+			"secret_name": "CLOUDFLARE_API_KEY"
+		}
+	],
+
+	// D1 for logging or state
+	"d1_databases": [
+		{
+			"binding": "SBI_LOG_DB",
+			"database_name": "sbi-logs-db",
+			"database_id": "9c66f7e8-a467-4a1c-bbe8-1bd53dd0851c"
+		}
+	],
+
+	// R2 bucket for serving widget scripts
+	"r2_buckets": [
+		{
+			"binding": "CDN_SBI",
+			"bucket_name": "cdn-sbi",
+			"preview_bucket_name": "cdn-sbi-preview"
+		}
+	]
+
+	// // Routes: bind this worker to your custom domain
+	// "routes": [
+	//   {
+	//     "pattern": "widgets.your-domain.com/*",
+	//     "env": "production"
+	//   }
+	// ],
+
+	// // Build step (if you need to run a build command)
+	// "build": {
+	//   "command": "npm install && npm run build",
+	//   "cwd": "./"
+	// }
+
+	/**
+	 * You can add more bindings here as needed:
+	 *
+	 * // KV Namespaces
+	 * "kv_namespaces": [
+	 *   { "binding": "MY_KV", "id": "<kv-id>" }
+	 * ],
+	 *
+	 * // Environment Variables
+	 * "vars": {
+	 *   "MY_VAR": "value"
+	 * },
+	 *
+	 * // Static Assets (if you prefer Workers Assets over R2)
+	 * "assets": {
+	 *   "directory": "./public",
+	 *   "binding": "ASSETS"
+	 * }
+	 */
+}

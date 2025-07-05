@@ -1,0 +1,6 @@
+{
+	"serviceToken": "YOUR_SERVICE_TOKEN_HERE",
+	"accountId": "YOUR_ACCOUNT_ID_HERE",
+	"containerId": "cf-launcher-container",
+	"apiBase": "https://api.cloudflare.com/client/v4/accounts/YOUR_ACCOUNT_ID_HERE/access/apps"
+}
