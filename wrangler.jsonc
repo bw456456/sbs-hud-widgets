@@ -8,7 +8,7 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2025-07-05",
 	"workers_dev": true,
-	// "routes": ["widgets.smallbiz.systems/*"],
+	"routes": ["widgets.smallbiz.systems/*"],
 	// Enable Cloudflare Observability (logs)
 	"observability": {
 		"logs": {
